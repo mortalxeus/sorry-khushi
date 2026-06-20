@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sorry Khushi! 🥺</title>
+    <title>For Khushi 🤍</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,231 +11,202 @@
             padding: 0;
         }
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
-            height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #faf5f5;
+            min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            overflow: hidden;
             padding: 20px;
-            position: relative;
+            overflow-x: hidden;
         }
 
-        /* Floating Hearts Background Animation */
-        .heart {
-            position: absolute;
-            color: rgba(255, 71, 126, 0.2);
-            font-size: 20px;
-            animation: float 6s linear infinite;
-            bottom: -50px;
-            z-index: 1;
-        }
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 35px 25px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(255, 71, 126, 0.15);
-            max-width: 420px;
-            width: 100%;
-            z-index: 10;
-            backdrop-filter: blur(5px);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-        }
         h1 {
-            color: #ff477e;
-            margin-bottom: 12px;
-            font-size: 2.2rem;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            font-size: 1.8rem;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 5px;
         }
         .subtitle {
-            color: #ff7096;
-            font-weight: bold;
+            font-size: 0.95rem;
+            color: #888;
+            margin-bottom: 30px;
+        }
+
+        /* Polaroid Gallery Layout */
+        .gallery {
+            display: flex;
+            gap: 20px;
+            max-width: 900px;
+            width: 100%;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 15px 15px 25px 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            border-radius: 2px;
+            width: 220px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+        .polaroid:hover {
+            transform: scale(1.03) rotate(2deg);
+        }
+        /* Dynamic rotations for a chaotic/natural look */
+        .polaroid:nth-child(1) { transform: rotate(-2deg); }
+        .polaroid:nth-child(2) { transform: rotate(1deg); }
+        .polaroid:nth-child(3) { transform: rotate(-1deg); }
+
+        .polaroid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border: 1px solid #eee;
+            margin-bottom: 15px;
+        }
+
+        .caption {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+        }
+
+        /* Minimal Interactive Buttons */
+        .decision-box {
+            text-align: center;
+            height: 80px;
+            position: relative;
+            width: 300px;
+        }
+        .ask-text {
             font-size: 1.1rem;
             margin-bottom: 15px;
+            color: #444;
         }
-        p {
-            color: #4f5d75;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        /* Interactive Perks Grid */
-        .perks-title {
-            font-size: 0.9rem;
-            color: #ff477e;
-            margin-bottom: 10px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        .grid-item {
-            background: #fff0f3;
-            padding: 12px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            color: #4f5d75;
-            border: 1px dashed #ffb3c1;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .grid-item:hover {
-            transform: scale(1.03);
-            background: #ffccd5;
-        }
-
-        .gif-container {
-            font-size: 60px;
-            margin-bottom: 15px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .btn-container {
+        .btn-group {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            position: relative;
-            height: 50px;
-            margin-top: 15px;
+            gap: 15px;
         }
         button {
-            padding: 12px 30px;
-            font-size: 1.05rem;
-            font-weight: bold;
+            padding: 10px 25px;
+            font-size: 0.95rem;
+            border-radius: 20px;
             border: none;
-            border-radius: 25px;
             cursor: pointer;
-            transition: transform 0.1s ease, box-shadow 0.2s ease;
+            transition: all 0.2s;
+            font-weight: 500;
         }
         #yesBtn {
-            background: linear-gradient(135deg, #2ec4b6, #20a498);
-            color: white;
-            box-shadow: 0 5px 15px rgba(46, 196, 182, 0.4);
-        }
-        #yesBtn:hover {
-            transform: scale(1.05);
+            background: #000;
+            color: #fff;
         }
         #noBtn {
-            background-color: #ff1654;
-            color: white;
+            background: #f0e6e6;
+            color: #888;
             position: absolute;
-            box-shadow: 0 5px 15px rgba(255, 22, 84, 0.3);
         }
 
-        .hidden {
-            display: none !important;
+        /* Success screen overlay */
+        .success-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
         }
-        .celebrate h1 {
-            color: #2ec4b6;
+        .success-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .success-overlay h2 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating Background Hearts -->
-    <div id="hearts-bg"></div>
+    <div id="main-content">
+        <h1>Sorry, Khushi.</h1>
+        <div class="subtitle">Tap the photos to flip them 🤍</div>
 
-    <!-- Main Apology Card -->
-    <div class="card" id="mainCard">
-        <div class="gif-container">🥺</div>
-        <h1>Sorry, Khushi!</h1>
-        <div class="subtitle">To the Best Sister in the World 💖</div>
-        <p>I know I was annoying and messed up. Please forgive your brother? Tap your compensation perks below to unlock them!</p>
-        
-        <div class="perks-title">Tap to redeem your peace offerings:</div>
-        <div class="grid">
-            <div class="grid-item" onclick="this.innerHTML='🎁 Free Treat Locked In!'">🍫 Favorite Chocolate</div>
-            <div class="grid-item" onclick="this.innerHTML='☕ Coffee Treat Approved!'">🧋 Coffee/Snack Date</div>
-            <div class="grid-item" onclick="this.innerHTML='🤫 Secrets Safe Forever!'">🔒 Zero Annoying Comments</div>
-            <div class="grid-item" onclick="this.innerHTML='👑 You win every fight today!'">🏆 Eternal Bragging Rights</div>
+        <div class="gallery">
+            <!-- Polaroid 1 -->
+            <div class="polaroid" onclick="flipCaption(this, 'Still mad at me? 🥺')">
+                <img src="pic1.jpg" onerror="this.src='https://images.unsplash.com/photo-1542382257-80dedb725088?w=400'">
+                <div class="caption">Click to reveal...</div>
+            </div>
+
+            <!-- Polaroid 2 -->
+            <div class="polaroid" onclick="flipCaption(this, 'I promise to buy you food! 🍕')">
+                <img src="pic2.jpg" onerror="this.src='https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=400'">
+                <div class="caption">Click to reveal...</div>
+            </div>
+
+            <!-- Polaroid 3 -->
+            <div class="polaroid" onclick="flipCaption(this, 'Best Sister Ever. Hands down. 🏆')">
+                <img src="pic3.jpg" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400'">
+                <div class="caption">Click to reveal...</div>
+            </div>
         </div>
 
-        <div class="btn-container">
-            <button id="yesBtn" onclick="forgiven()">Yes</button>
-            <button id="noBtn" onmouseenter="moveButton()" onclick="moveButton()">No</button>
+        <div class="decision-box">
+            <div class="ask-text">Forgive me?</div>
+            <div class="btn-group">
+                <button id="yesBtn" onclick="celebrate()">Yes</button>
+                <button id="noBtn" onmouseenter="evade()" onclick="evade()">No</button>
+            </div>
         </div>
     </div>
 
-    <!-- Success Celebration Card -->
-    <div class="card hidden" id="happyCard">
-        <div class="gif-container">🎉🥳💃</div>
-        <h1>Woohoo! Thank You Khushi!</h1>
-        <div class="subtitle" style="color: #2ec4b6;">Anger level: 0% successfully reached!</div>
-        <p>Best sister privileges have been restored. Your treaty gifts will be delivered promptly. Sending you the biggest virtual hug! 🤗✨</p>
+    <!-- Minimalistic Success Screen -->
+    <div class="success-overlay" id="successScreen">
+        <h2>Yay! 🕊️</h2>
+        <p style="color: #666;">Ice broken successfully. I'll make it up to you soon!</p>
     </div>
 
     <script>
-        // Generate Floating Hearts Background
-        const heartsBg = document.getElementById('hearts-bg');
-        const heartEmojis = ['❤️', '💖', '✨', '🌸', '🧸'];
-        
-        for (let i = 0; i < 15; i++) {
-            let heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDelay = Math.random() * 5 + 's';
-            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
-            heartsBg.appendChild(heart);
+        // Simple click-to-reveal mechanic for captions
+        function flipCaption(element, message) {
+            const caption = element.querySelector('.caption');
+            caption.style.opacity = 0;
+            setTimeout(() => {
+                caption.innerText = message;
+                caption.style.opacity = 1;
+                caption.style.color = '#000';
+                caption.style.fontWeight = '500';
+            }, 150);
         }
 
-        // Smart Button Runaway Logic
-        function moveButton() {
-            const noBtn = document.getElementById('noBtn');
-            const card = document.getElementById('mainCard').getBoundingClientRect();
+        // Clean, quick run-away mechanic for the No button
+        function evade() {
+            const btn = document.getElementById('noBtn');
+            const box = document.querySelector('.decision-box').getBoundingClientRect();
             
-            // Keeps button movement highly frantic and responsive but on-screen
-            const padding = 20;
-            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
-            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            const x = Math.random() * (window.innerWidth - 100);
+            const y = Math.random() * (window.innerHeight - 50);
             
-            let randomX = Math.random() * maxX;
-            let randomY = Math.random() * maxY;
-
-            // Prevent it from hiding directly behind the center text container if possible
-            if (randomX > card.left && randomX < card.right && randomY > card.top && randomY < card.bottom) {
-                randomX += 150;
-                randomY += 150;
-            }
-
-            noBtn.style.position = 'fixed';
-            noBtn.style.left = Math.min(randomX, maxX) + 'px';
-            noBtn.style.top = Math.min(randomY, maxY) + 'px';
+            btn.style.position = 'fixed';
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
         }
 
-        function forgiven() {
-            document.getElementById('mainCard').classList.add('hidden');
-            document.getElementById('happyCard').classList.remove('hidden');
-            
-            // Extra burst of hearts when she clicks yes
-            for (let i = 0; i < 20; i++) {
-                setTimeout(() => {
-                    let heart = document.createElement('div');
-                    heart.classList.add('heart');
-                    heart.innerText = '🎉';
-                    heart.style.left = Math.random() * 100 + 'vw';
-                    heart.style.animationDuration = '2s';
-                    heartsBg.appendChild(heart);
-                }, i * 100);
-            }
+        function celebrate() {
+            document.getElementById('successScreen').classList.add('active');
         }
     </script>
 </body>
