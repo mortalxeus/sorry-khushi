@@ -296,4 +296,82 @@
             </div>
 
             <div class="polaroid" onclick="revealCaption(this, 'Best Sister Privileges Restored. 🏆✨')">
-                <img src="k3.jpeg" onerror="this.src='
+                <img src="k3.jpeg" onerror="this.src='https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400'">
+                <div class="caption">Click to open...</div>
+            </div>
+        </div>
+
+        <div class="decision-box">
+            <div class="ask-text">Forgive me?</div>
+            <div class="btn-group">
+                <button class="action-btn" id="yesBtn" onclick="showCelebration()">Yes, I forgive you</button>
+                <button class="action-btn" id="noBtn" onmouseenter="evadeButton(event)" ontouchstart="evadeButton(event)" onclick="evadeButton(event)">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-overlay" id="successScreen">
+        <h2>Yay! Best Sister Ever 🕊️✨</h2>
+        <p style="color: #666; font-size: 1.1rem; max-width: 400px; line-height: 1.6;">
+            Treat is officially locked in. Thank you for always having the biggest heart, Khushi! 🤗
+        </p>
+    </div>
+
+    <script>
+        // Generate Continuous Floating Hearts
+        const heartsContainer = document.getElementById('heartsBg');
+        const heartIcons = ['❤️', '💖', '✨', '🌸', '💕'];
+        
+        for (let i = 0; i < 20; i++) {
+            let heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 6 + 's';
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            heart.style.animationDuration = Math.random() * 4 + 5 + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Page Navigation
+        function goToPage2() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        }
+
+        // Polaroid Interactive Captions
+        function revealCaption(element, message) {
+            const caption = element.querySelector('.caption');
+            caption.style.opacity = '0';
+            setTimeout(() => {
+                caption.innerText = message;
+                caption.style.opacity = '1';
+                caption.style.color = '#ff477e';
+                caption.style.fontWeight = '500';
+            }, 180);
+        }
+
+        // High-performance 'No' Button Evasion
+        function evadeButton(event) {
+            if (event) { event.preventDefault(); }
+            const btn = document.getElementById('noBtn');
+            const padding = 30;
+            
+            const maxX = window.innerWidth - btn.offsetWidth - padding;
+            const maxY = window.innerHeight - btn.offsetHeight - padding;
+            
+            const randomX = Math.max(padding, Math.random() * maxX);
+            const randomY = Math.max(padding, Math.random() * maxY);
+            
+            btn.style.position = 'fixed';
+            btn.style.left = randomX + 'px';
+            btn.style.top = randomY + 'px';
+        }
+
+        // Show Final State
+        function showCelebration() {
+            document.getElementById('successScreen').classList.add('active');
+        }
+    </script>
+</body>
+</html>
