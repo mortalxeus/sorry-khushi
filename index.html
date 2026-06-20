@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>I'm Sorry!</title>
+    <title>Sorry Khushi! 🥺</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,7 +11,7 @@
             padding: 0;
         }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
             height: 100vh;
             display: flex;
@@ -20,61 +20,128 @@
             text-align: center;
             overflow: hidden;
             padding: 20px;
+            position: relative;
         }
+
+        /* Floating Hearts Background Animation */
+        .heart {
+            position: absolute;
+            color: rgba(255, 71, 126, 0.2);
+            font-size: 20px;
+            animation: float 6s linear infinite;
+            bottom: -50px;
+            z-index: 1;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
         .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 400px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 35px 25px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(255, 71, 126, 0.15);
+            max-width: 420px;
             width: 100%;
-            transition: transform 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
         h1 {
             color: #ff477e;
+            margin-bottom: 12px;
+            font-size: 2.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+        .subtitle {
+            color: #ff7096;
+            font-weight: bold;
+            font-size: 1.1rem;
             margin-bottom: 15px;
-            font-size: 2rem;
         }
         p {
             color: #4f5d75;
-            font-size: 1.1rem;
+            font-size: 1rem;
             line-height: 1.6;
-            margin-bottom: 25px;
-        }
-        .gif-container {
-            font-size: 50px;
             margin-bottom: 20px;
         }
+        
+        /* Interactive Perks Grid */
+        .perks-title {
+            font-size: 0.9rem;
+            color: #ff477e;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        .grid-item {
+            background: #fff0f3;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: #4f5d75;
+            border: 1px dashed #ffb3c1;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .grid-item:hover {
+            transform: scale(1.03);
+            background: #ffccd5;
+        }
+
+        .gif-container {
+            font-size: 60px;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         .btn-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             position: relative;
             height: 50px;
+            margin-top: 15px;
         }
         button {
-            padding: 12px 25px;
-            font-size: 1rem;
+            padding: 12px 30px;
+            font-size: 1.05rem;
             font-weight: bold;
             border: none;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
         }
         #yesBtn {
-            background-color: #2ec4b6;
+            background: linear-gradient(135deg, #2ec4b6, #20a498);
             color: white;
-            box-shadow: 0 4px 15px rgba(46, 196, 182, 0.4);
+            box-shadow: 0 5px 15px rgba(46, 196, 182, 0.4);
+        }
+        #yesBtn:hover {
+            transform: scale(1.05);
         }
         #noBtn {
             background-color: #ff1654;
             color: white;
             position: absolute;
-            right: 50px;
+            box-shadow: 0 5px 15px rgba(255, 22, 84, 0.3);
         }
-        /* Celebration State */
+
         .hidden {
-            display: none;
+            display: none !important;
         }
         .celebrate h1 {
             color: #2ec4b6;
@@ -83,38 +150,92 @@
 </head>
 <body>
 
+    <!-- Floating Background Hearts -->
+    <div id="hearts-bg"></div>
+
+    <!-- Main Apology Card -->
     <div class="card" id="mainCard">
         <div class="gif-container">🥺</div>
-        <h1>I am So Sorry!</h1>
-        <p>I know I messed up and made you mad. You're the best sister ever, and I promise to make it up to you. Please forgive me?</p>
+        <h1>Sorry, Khushi!</h1>
+        <div class="subtitle">To the Best Sister in the World 💖</div>
+        <p>I know I was annoying and messed up. Please forgive your brother? Tap your compensation perks below to unlock them!</p>
         
+        <div class="perks-title">Tap to redeem your peace offerings:</div>
+        <div class="grid">
+            <div class="grid-item" onclick="this.innerHTML='🎁 Free Treat Locked In!'">🍫 Favorite Chocolate</div>
+            <div class="grid-item" onclick="this.innerHTML='☕ Coffee Treat Approved!'">🧋 Coffee/Snack Date</div>
+            <div class="grid-item" onclick="this.innerHTML='🤫 Secrets Safe Forever!'">🔒 Zero Annoying Comments</div>
+            <div class="grid-item" onclick="this.innerHTML='👑 You win every fight today!'">🏆 Eternal Bragging Rights</div>
+        </div>
+
         <div class="btn-container">
             <button id="yesBtn" onclick="forgiven()">Yes</button>
-            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+            <button id="noBtn" onmouseenter="moveButton()" onclick="moveButton()">No</button>
         </div>
     </div>
 
+    <!-- Success Celebration Card -->
     <div class="card hidden" id="happyCard">
-        <div class="gif-container">🎉🥳💖</div>
-        <h1>Thank You!</h1>
-        <p>Yay! Best sister tracking active again. I owe you a treat/gift soon! 🍫</p>
+        <div class="gif-container">🎉🥳💃</div>
+        <h1>Woohoo! Thank You Khushi!</h1>
+        <div class="subtitle" style="color: #2ec4b6;">Anger level: 0% successfully reached!</div>
+        <p>Best sister privileges have been restored. Your treaty gifts will be delivered promptly. Sending you the biggest virtual hug! 🤗✨</p>
     </div>
 
     <script>
+        // Generate Floating Hearts Background
+        const heartsBg = document.getElementById('hearts-bg');
+        const heartEmojis = ['❤️', '💖', '✨', '🌸', '🧸'];
+        
+        for (let i = 0; i < 15; i++) {
+            let heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerText = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+            heartsBg.appendChild(heart);
+        }
+
+        // Smart Button Runaway Logic
         function moveButton() {
             const noBtn = document.getElementById('noBtn');
-            // Generate random positions within safe mobile screen bounds
-            const x = Math.random() * (window.innerWidth - 120);
-            const y = Math.random() * (window.innerHeight - 120);
+            const card = document.getElementById('mainCard').getBoundingClientRect();
             
+            // Keeps button movement highly frantic and responsive but on-screen
+            const padding = 20;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            
+            let randomX = Math.random() * maxX;
+            let randomY = Math.random() * maxY;
+
+            // Prevent it from hiding directly behind the center text container if possible
+            if (randomX > card.left && randomX < card.right && randomY > card.top && randomY < card.bottom) {
+                randomX += 150;
+                randomY += 150;
+            }
+
             noBtn.style.position = 'fixed';
-            noBtn.style.left = x + 'px';
-            noBtn.style.top = y + 'px';
+            noBtn.style.left = Math.min(randomX, maxX) + 'px';
+            noBtn.style.top = Math.min(randomY, maxY) + 'px';
         }
 
         function forgiven() {
             document.getElementById('mainCard').classList.add('hidden');
             document.getElementById('happyCard').classList.remove('hidden');
+            
+            // Extra burst of hearts when she clicks yes
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    let heart = document.createElement('div');
+                    heart.classList.add('heart');
+                    heart.innerText = '🎉';
+                    heart.style.left = Math.random() * 100 + 'vw';
+                    heart.style.animationDuration = '2s';
+                    heartsBg.appendChild(heart);
+                }, i * 100);
+            }
         }
     </script>
 </body>
