@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I'm Sorry!</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+        h1 {
+            color: #ff477e;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+        p {
+            color: #4f5d75;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .gif-container {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        #yesBtn {
+            background-color: #2ec4b6;
+            color: white;
+            box-shadow: 0 4px 15px rgba(46, 196, 182, 0.4);
+        }
+        #noBtn {
+            background-color: #ff1654;
+            color: white;
+            position: absolute;
+            right: 50px;
+        }
+        /* Celebration State */
+        .hidden {
+            display: none;
+        }
+        .celebrate h1 {
+            color: #2ec4b6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card" id="mainCard">
+        <div class="gif-container">🥺</div>
+        <h1>I am So Sorry!</h1>
+        <p>I know I messed up and made you mad. You're the best sister ever, and I promise to make it up to you. Please forgive me?</p>
+        
+        <div class="btn-container">
+            <button id="yesBtn" onclick="forgiven()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <div class="card hidden" id="happyCard">
+        <div class="gif-container">🎉🥳💖</div>
+        <h1>Thank You!</h1>
+        <p>Yay! Best sister tracking active again. I owe you a treat/gift soon! 🍫</p>
+    </div>
+
+    <script>
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            // Generate random positions within safe mobile screen bounds
+            const x = Math.random() * (window.innerWidth - 120);
+            const y = Math.random() * (window.innerHeight - 120);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        function forgiven() {
+            document.getElementById('mainCard').classList.add('hidden');
+            document.getElementById('happyCard').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
